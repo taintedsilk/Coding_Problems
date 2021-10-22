@@ -1,29 +1,99 @@
 #include <iostream>
-#include <map>
 #include <stdio.h>
 #include <string>
 using namespace std;
 
+
 int main()
 {
 
-    map<char, int>m;
     long long n;
     cin >> n;
     string a;
     cin >> a;
-    m[a[0]] += 1;
-    string c = "";
-    for (long long i = 1; i < n; i += 1) {
-        if (a[i] == 'B') { // add && !c.empty() ?
-            m[a[c.length()]] -= 1;
-            c.pop_back(); //replace with c = substr(0, c.size - 1)
-
-        }
-        else {
-            c += a[i];
-            m[a[i]] += 1;
-        }
+    char d = '^';
+    long long x = 0, y = 0;
+    for (long long i = 0; i < n; i += 1) {
+    switch(d) {
+    case '^': {
+        switch(a[i]) {
+            case 'G':
+                y += 1;
+                break;
+            case 'R':
+                x += 1;
+                d = '>';
+                break;
+            case 'L':
+                x -= 1;
+                d = '<';
+                break;
+            case 'B':
+                y -= 1;
+                d = 'v';break;
+        }}
+    case 'v': {
+    switch (a[i]) {
+            case 'G':
+                y -= 1;
+                break;
+            case 'R':
+                {
+                x -= 1;
+                d = '<';break;
+                }
+            case 'L':
+                {
+                    x += 1;
+                    d = '>';break;
+                }
+            case 'B':
+                {
+                    y += 1;
+                    d = '^';break;
+                }
     }
-    cout << m['G'] << " " << m['R'] - m['L'];
-}
+    }
+    case '<':{
+        switch (a[i]) {
+        case 'G':
+                {x -=1 ;break;}
+            case 'R':
+                {
+                y += 1;
+                d = '^';
+                }
+            case 'L':
+                {
+                    y -= 1;
+                    d = 'v';break;
+                }
+            case 'B':
+                {
+                    x += 1;
+                    d = '>';break;
+                }
+    }}
+    case '>':
+        switch (a[i]) {
+        case 'G':
+                {x += 1 ;break;}
+            case 'R':
+                {
+                y -= 1;
+                d = 'v';break;
+                }
+            case 'L':
+                {
+                    y += 1;
+                    d = '^';break;
+                }
+            case 'B':
+                {
+                    x += 1;
+                    d = '<';break;
+                }
+    }}}
+    cout << x << " " << y;}
+
+
