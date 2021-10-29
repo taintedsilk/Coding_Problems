@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-
+#include <stdio.h>
 using namespace std;
 
 string change(string a) {
@@ -22,6 +22,8 @@ string change(string a) {
 }
 
 int main() {
+  	freopen("INP.txt", "r" , stdin);
+  	freopen("OUT.txt", "w", stdout);
 	string a;
 	cin >> a;
 	int time = 0;
