@@ -2,38 +2,87 @@
 #include <sstream>
 #include <string>
 #include <algorithm>
+#include <stdio.h>
 using namespace std;
 
-bool is_not_digit(char c)
-{
-    return !isdigit(c);
-}
-bool string_compare(string a, string b) {
-    int n1,n2;
-    stringstream ss;
-    ss << a;
-    ss << b;
-    ss >> n1;
-    ss.clear();
-    ss << b;
-    ss << a;
-    ss >> n2;
-    return n1 > n2;
-}
+struct Number {
+string old;
+string newer = "";
+long long n;
+bool operator< (const Number &other) const {
+        return n < other.n;
+}};
 
 
+int main() {
+  	#include <iostream>
+#include <sstream>
+#include <string>
+#include <algorithm>
+using namespace std;
 
-int main()
-{
+struct Number {
+string old;
+string newer = "";
+long long n;
+bool operator< (const Number &other) const {
+        return n < other.n;
+}};
 
-    long long n;
+
+int main() {
+    Number arr[50];
+    long long n, a;
     cin >> n;
-    string arr[50];
-    for (long long i = 0; i < n; i += 1) {
-        cin >> arr[i];
+    cin >> arr[0].old;
+    long long big_size = arr[0].old.length();
+    for (long long i = 1; i < n; i += 1) {
+        cin >> arr[i].old;
+        a = arr[i].old.length();
+        big_size = max(big_size, a);
     }
-    sort(arr, arr + n, string_compare);
+    big_size += 1;
+    stringstream ss;
     for (long long i = 0; i < n; i += 1) {
-        cout << arr[i];
+        while (arr[i].newer.length() < big_size){
+        arr[i].newer += arr[i].old;}
+        arr[i].newer = arr[i].newer.substr(0, big_size);
+        ss << arr[i].newer.substr(0, big_size);
+        ss >> arr[i].n;
+        ss.clear();
     }
-}
+
+    sort(arr, arr+n);
+    for (long long i = n - 1; i >= 0; i -= 1) {
+        cout << arr[i].old;
+    }
+
+    }
+
+    Number arr[50];
+    long long n, a;
+    cin >> n;
+    cin >> arr[0].old;
+    long long big_size = arr[0].old.length();
+    for (long long i = 1; i < n; i += 1) {
+        cin >> arr[i].old;
+        a = arr[i].old.length();
+        big_size = max(big_size, a);
+    }
+    big_size += 1;
+    stringstream ss;
+    for (long long i = 0; i < n; i += 1) {
+        while (arr[i].newer.length() < big_size){
+        arr[i].newer += arr[i].old;}
+        arr[i].newer = arr[i].newer.substr(0, big_size);
+        ss << arr[i].newer.substr(0, big_size);
+        ss >> arr[i].n;
+        ss.clear();
+    }
+
+    sort(arr, arr+n);
+    for (long long i = n - 1; i >= 0; i -= 1) {
+        cout << arr[i].old;
+    }
+
+    }
