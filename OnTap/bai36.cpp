@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <sstream>
 #include <algorithm>
@@ -29,11 +30,10 @@ int add_reverse(int number){
 
 int main()
 {
-
+  	freopen("INP.txt", "r" , stdin);
+  	freopen("OUT.txt", "w", stdout);
     unsigned long long b;
     cin >> b;
-    while (!check_palin(b)) {b = add_reverse(b);
-    cout << b << " ";}
+    while (!check_palin(b)) {b = add_reverse(b);}
     cout << b;
 }
-
