@@ -1,79 +1,73 @@
 #include <iostream>
-#include <stdio.h>
+#include <unordered_set>
+#include <unordered_map>
 using namespace std;
-
-struct Line {
-    long long s = 1, f;
-    bool free = false; };
-
 
 int main()
 {
-    freopen("INP.txt", "r", stdin);
-    freopen("OUT.txt", "w", stdout);
+
     long long row, col;
     cin >> row >> col;
-    long long res = row*col;
+    long long res = row * col;
+
+    unordered_map <int, unordered_set<int> >m;
     long long arr[100][100];
-
-    Line obj[100];
-
+    pair<int, int> p;
     long long start, finish;
     long long high;
-    for (long long i = 0; i < row; i += 1) {
-        for (long long j = 0; j < col; j += 1) {
+
+    long long i, j;
+    for (i = 0; i < row; i += 1) {
+        for (j = 0; j < col; j += 1) {
             cin >> arr[i][j];
         }
     }
-    for (long long i = 1; i < row - 1; i += 1) {
-        high = arr[i][0];
-        while (arr[i][obj[i].s] >= high) {
-            high = arr[i][obj[i].s];
-            obj[i].s += 1;
-        }
-        high = arr[i][col - 1];
-        obj[i].f = col - 1;
-        while (arr[i][obj[i].f] >= high && obj[i].f > obj[i].s) {
-            high = arr[i][obj[i].f];
-            obj[i].f -= 1;
-        }
-        if (obj[i].f < obj[i].s) obj[i].free = true;}
-    for (long long i = 0; i < row; i += 1) {
-        cout << obj[i].s << " " << obj[i].f;
-        cout << "\n";}
-    long long b, e;
-    long long j;
-    for (long long i = 1; i < col - 1; i += 1) {
-        high = arr[0][i];
-        start = 1, finish = row - 1;
-        while (arr[start][i] >= high) {
-            high = arr[start][i];
-            start += 1;
-        }
-        high = arr[row - 1][i];
-        while (arr[finish][i] >= high && finish >= start) {
+    int idx;
 
-            high = arr[finish][i];
-            finish -= 1;
-        }
-        // this part
-        for (b = start; b <= finish; b += 1) {
-            if (obj[i].s <= i || obj[i].f >= i) {
-                break;
+    for (j = 1; j < col - 1; j += 1) {
+        high = -1;
+        idx = 0;
+        for (i = 0; i < row; i += 1) {
+            if (arr[i][j] >= high) {
+                high = arr[i][j];
+                idx = i;
+                m[i].insert(j);
             }
         }
-        for (e = finish; e >= b; e -= 1) {
-            if (obj[i].s <= i || obj[i].f >= i) {
-                break;
+        high = -1;
+        for (i = row - 1; i > idx; i -= 1) {
+            if (arr[i][j] >= high) {
+                high = arr[i][j];
+                m[i].insert(j);
             }
         }
-        //
-        cout << b << " " << e;
-        cout <<"\n";
-        if (b <= e)
-            {res -= (e - b + 1);}
-        }
-        cout << res;
     }
 
-
+    for (i = 1; i < row - 1; i += 1) {
+        high = -1;
+        idx = 0;
+        for (j = 0; j < col; j += 1) {
+            if (arr[i][j] >= high) {
+                high = arr[i][j];
+                idx = j;
+                m[i].insert(j);
+            }
+        }
+        high = -1;
+        for (j = col - 1; j > idx; j -= 1) {
+            if (arr[i][j] >= high) {
+                high = arr[i][j];
+                m[i].insert(j);
+            }
+        }
+    }
+    
+    unordered_map <int, unordered_set<int> >::iterator it;
+    int total = 0;
+    for (it = m.begin(); it != m.end(); it++)
+    {
+        total += it->second.size();  // string's value 
+    }
+    if (row > 2 && col > 2) cout << total + 4;
+    else cout << row * col;
+}
