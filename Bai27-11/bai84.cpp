@@ -2,6 +2,8 @@
 
 using namespace std;
 
+map<string, int>m;
+string arr[100000];
 int main()
 {
     freopen("INP.txt", "r", stdin);
@@ -11,8 +13,6 @@ int main()
     long long n;
     string a;
     cin >> n;
-    map<string, int>m;
-    string arr[100000];
     for (int i = 0; i < n; i += 1) {
         cin >> arr[i];
     }
@@ -27,4 +27,3 @@ int main()
         }
     }
 }
-
