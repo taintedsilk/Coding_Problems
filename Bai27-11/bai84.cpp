@@ -2,8 +2,9 @@
 
 using namespace std;
 
+
 map<string, int>m;
-string arr[100000];
+string arr[200000];
 int main()
 {
     freopen("INP.txt", "r", stdin);
@@ -18,12 +19,14 @@ int main()
     }
     for (int i = 0; i < n - 1; i += 1) {
         cin >> a;
-        m[a] = 1;
+        m[a] += 1;
     }
     for (int i = 0; i < n; i += 1) {
         if (!m[arr[i]]) {
             cout << arr[i];
             break;
         }
+        else m[arr[i]] -= 1;
     }
 }
+
