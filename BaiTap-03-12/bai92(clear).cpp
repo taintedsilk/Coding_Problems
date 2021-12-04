@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <stdio.h>
 using namespace std;
 typedef long long ll;
 typedef bool bol;
