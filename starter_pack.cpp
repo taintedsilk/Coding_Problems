@@ -6,6 +6,8 @@ typedef long long ll;
 typedef bool bol;
 typedef string str;
 
+void solve() {
+}
 int main()
 {
     freopen("INP.txt", "r" ,stdin);
