@@ -27,7 +27,10 @@ void solve()
             key = arr[i % n];
         }
     }
-    loop += 1 + n - key;
+
+    if ((k / n) == 0) {
+        key = 1;
+    }
     for (int i = 0; i < k % n; i += 1) {
         if (key < arr[i % n]) {
             time += arr[i % n] - key;
@@ -39,6 +42,7 @@ void solve()
         }
     }
     cout << loop * (k / n) + time;
+
 
 }
 int main()
