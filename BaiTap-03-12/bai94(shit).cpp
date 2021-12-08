@@ -18,23 +18,29 @@ void solve()
     int dis = INT_MAX;
     for (int j = 0; j < m; j += 1)
     {
-        for (int i = n - 1; i >= 0; i -= 1)
+        for (int i = 0; i < n; i += 1)
         {
-            if (arr[i][j] == '.')
+            if (arr[i][j] == 'X')
             {
-                for (int k = i - 1; k >= 0; k -= 1)
+                for (int k = i; k < n; k += 1)
                 {
                     if (arr[k][j] == 'X')
                     {
-                        dis = min(dis, i - k);
-                        break;
+                        i = k;
                     }
+                    if (arr[k][j] == '#')
+                    {
+                        dis = min(dis, k - i);
+                        i = k;
+                        break;
 
+                    }
                 }
-                break;
+
             }
         }
     }
+    dis -= 1;
     char temp;
     for (int i = 0; i < m; i += 1)
     {
@@ -56,7 +62,7 @@ void solve()
 }
 int main()
 {
-    freopen("INP.txt", "r" ,stdin);
+    freopen("INP.txt", "r",stdin);
     freopen("OUT.txt", "w", stdout);
     ios_base::sync_with_stdio(0);
     cin.tie(0);
