@@ -5,6 +5,7 @@ using namespace std;
 typedef long long ll;
 typedef bool bol;
 typedef string str;
+typedef unsigned long long ull;
 
 void solve() {
 }
