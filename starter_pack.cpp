@@ -11,8 +11,8 @@ void solve() {
 }
 int main()
 {
-    freopen("INP.txt", "r" ,stdin);
-    freopen("OUT.txt", "w", stdout);
+    //freopen("INP.txt", "r" ,stdin);
+    //freopen("OUT.txt", "w", stdout);
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     //long long t;
