@@ -7,6 +7,9 @@ typedef bool bol;
 typedef string str;
 typedef unsigned long long ull;
 
+#define it1 it->first
+#define it2 it->second
+
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
         // http://xorshift.di.unimi.it/splitmix64.c
