@@ -25,7 +25,9 @@ struct custom_hash {
     }
 };
 unordered_map<ll, ll, custom_hash>m;
-
+// must be power of 2
+m.reserve(32768);
+m.max_load_factor(0.25);
 void solve() {
 }
 int main()
