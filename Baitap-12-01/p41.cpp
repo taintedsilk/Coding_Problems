@@ -22,7 +22,7 @@ ll dfs(ll a) {
     found[a] = 1;
     for (ll i = 0; i < m[a].size(); i += 1) {
         ll ele = m[a][i];
-        if (!found[ele]) res += dfs(m[a][i]);
+        if (!found[ele]) res += dfs(ele);
     }
     return res;
 
