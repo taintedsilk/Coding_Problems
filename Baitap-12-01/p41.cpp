@@ -40,9 +40,11 @@ void solve()
         m[a].push_back(b);
         m[b].push_back(a);
     }
+    // khi a liền vs b thì a có thể truy cập b và b có thể truy cập a
     ll res = 1;
     for (it = m.begin(); it != m.end(); it++) {
         if (!found[it1]) res *= (ll) pow(2, (dfs(it1) - 1));
+        // kết quả là 2 ^ (n - t) --- t là số cây khác nhau
     }
     cout << res;
 
