@@ -3,12 +3,18 @@
 using namespace std;
 
 typedef long long ll;
-typedef bool bol;
+typedef bool bl;
 typedef string str;
 typedef unsigned long long ull;
+typedef double db;
 
 #define it1 it->first
 #define it2 it->second
+#define fi first
+#define se second
+#define p(p1, p2) make_pair(p1, p2)
+#define f(i, n) for (ll i = 0; i < n; i += 1)
+#define fu(i, start, end) for (ll i = start; i < end; i += 1)
 
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
