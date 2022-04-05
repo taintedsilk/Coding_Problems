@@ -45,7 +45,9 @@ void solve()
     ll i = a.size() - 1, j = b.size() - 1;
     vector<pair<char, ll>>ans;
     while (i != 0 && j != 0) {
-        if (dp[i][j] == dp[i - 1][j] + 1) ans.push_back(p('')
+        if (dp[i][j] == dp[i - 1][j] + 1) {ans.push_back(p('I'), i); i -= 1;}
+        else if (dp[i][j] == dp[i - 1][j - 1] + 1) {ans.push_back(p('R'), i); i -= 1; j -= 1;}
+        else if (dp[i][j] == dp[i - 1][j - 1]) {i -= 1; j -= 1;} 
         
     }
 }
